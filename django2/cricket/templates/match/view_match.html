@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">INDIAN MATCH SCORECARD</h1>
+    <a href="/match/add"><button>Add Match</button></a>
+    {% if matches %}
+    <table border="1px" cellspacing="0" cellpadding="10" align="center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Player Name</th>
+                <th>Score</th>
+                <th>StrikeRate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for match in matches %}
+            <tr>
+                <td>{{match.id}}</td>
+                <td>{{match.name}}</td>
+                <td>{{match.score}}</td>
+                <td>{{match.strikerate}}</td>
+                <td colspan="2">
+                    <a href="/match/update/{{match.id}}"><button>Update</button></a>
+                    <a href="/match/delete/{{match.id}}"><button>Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h1>No Records Found</h1>
+    {% endif %}
+</body>
+</html>
